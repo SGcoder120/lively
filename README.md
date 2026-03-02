@@ -14,7 +14,7 @@ Concert discovery web app with an Express API and a vanilla JavaScript frontend.
 ## Tech Stack
 
 - Frontend: Vanilla JS + Vite
-- Styling: PicoCSS (+ custom CSS)
+- Styling: CSS + PicoCSS
 - Backend: Node.js + Express
 - Data: Local in-memory dataset (`server/data/concerts.js`)
 
