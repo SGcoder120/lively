@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap");
+
+:root {
+  --bg: #f4efe6;
+  --surface: #fffdf9;
+  --surface-strong: #fff7eb;
+  --text: #181713;
+  --muted: #5c574f;
+  --line: #d9cdb9;
+  --accent: #e5532d;
+  --accent-2: #2f7f63;
+  --shadow: 0 12px 32px rgba(27, 22, 16, 0.12);
+  --radius: 18px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 1.5rem;
+  color: var(--text);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(229, 83, 45, 0.15), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(47, 127, 99, 0.18), transparent 30%),
+    linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+}
+
+header.container {
+  padding-top: 1.5rem;
+  padding-bottom: 0.4rem;
+}
+
+h1 {
+  font-family: "Bebas Neue", "Impact", sans-serif;
+  letter-spacing: 0.06em;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  margin-bottom: 0.2rem;
+}
+
+.brand-title-group {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  display: flex;
+  color: #222;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  letter-spacing: 0.005em;
+}
+
+.brand-logo {
+  width: clamp(2.4rem, 4vw, 3.2rem);
+  height: clamp(2.4rem, 4vw, 3.2rem);
+  border-radius: 0.65rem;
+  object-fit: cover;
+}
+
+.site-subtitle {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+main.container {
+  padding-top: 0.35rem;
+  padding-bottom: 2rem;
+}
+
+.filters,
+.filters * {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.filters {
+  background: linear-gradient(180deg, var(--surface) 0%, #fff8ef 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.filters h3 {
+  color: #222;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.filter-field select {
+  margin: 0;
+  border-color: var(--line);
+  color: var(--text);
+  background-color: #fffcf6;
+  font-size: 0.92rem;
+}
+
+.results-count {
+  display: inline-block;
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.empty-state {
+  margin-top: 0.65rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+#app .concerts-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+#app .concert-card {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#app .concert-card article {
+  margin: 0;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-strong) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.85rem 0.85rem 0.8rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#app .concert-card article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px rgba(27, 22, 16, 0.18);
+}
+
+.concert-link {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.concert-link::after {
+  content: "->";
+  margin-left: 0.4rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+#app .concert-card p {
+  margin: 0.45rem 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#app .concert-card .tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f3a2a;
+  background: rgba(47, 127, 99, 0.18);
+  border: 1px solid rgba(47, 127, 99, 0.4);
+  padding: 0.24rem 0.55rem;
+  border-radius: 999px;
+}
+
+#app .concert-card .tag-venue {
+  color: #5a2205;
+  background: rgba(229, 83, 45, 0.14);
+  border-color: rgba(229, 83, 45, 0.35);
+}
+
+.concert-detail {
+  max-width: 720px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--surface) 0%, #fff8ef 100%);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem 1.25rem 1.2rem;
+}
+
+.concert-detail > article {
+  
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.concert-detail h2 {
+  color: #222;
+  margin-top: 0.1rem;
+  margin-bottom: 0.95rem;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  letter-spacing: 0.005em;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.concert-detail p {
+  margin: 0.48rem 0;
+}
+
+.concert-detail p {
+  color: #222;
+}
+
+.concert-detail p strong {
+  color: #222;
+}
+
+.concert-detail a,
+#app > p a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.concert-detail a:hover,
+#app > p a:hover {
+  text-decoration: underline;
+}
+
+#app > p,
+#app > h2 {
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .filter-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #app .concerts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  h1 {
+    text-align: center;
+  }
+
+  .brand-title {
+    justify-content: center;
+  }
+
+  .site-subtitle {
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  #app .concert-card article {
+    padding: 0.9rem 0.85rem;
+  }
+
+  .concert-detail {
+    padding: 1rem 0.95rem;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  #app .concerts-grid {
+    grid-template-columns: 1fr;
+  }
+}
