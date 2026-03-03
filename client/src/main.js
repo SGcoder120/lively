@@ -22,6 +22,10 @@ async function fetchConcert(slug) {
   return res.json();
 }
 
+function clear404Theme() {
+  document.body.classList.remove('not-found-page');
+}
+
 function getUniqueValues(items, key) {
   return [...new Set(items.map((item) => item[key]).filter(Boolean))].sort();
 }
@@ -77,6 +81,7 @@ function resetFilters() {
 }
 
 function renderList(concerts) {
+  clear404Theme();
   app.innerHTML = '';
 
   const filtersSection = document.createElement('article');
@@ -204,6 +209,7 @@ function renderList(concerts) {
 }
 
 function renderDetail(concert) {
+  clear404Theme();
   const container = document.createElement('div');
   container.innerHTML = `
     <article>
@@ -222,8 +228,18 @@ function renderDetail(concert) {
   app.appendChild(container);
 }
 
-function render404() {
-  app.innerHTML = '<h2>404 &mdash; Page not found</h2><p>The requested page does not exist.</p><p><a href="/">Back home</a></p>';
+async function render404() {
+  await import('./404.css');
+  document.body.classList.add('not-found-page');
+
+  app.innerHTML = `
+    <article class="not-found-card">
+      <p class="status-code">404</p>
+      <h1>Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+      <a href="/" role="button" class="secondary outline">Return Home</a>
+    </article>
+  `;
 }
 
 async function router() {
@@ -249,10 +265,10 @@ async function router() {
         resetFiltersOnHome = true;
         renderDetail(concert);
       } catch (err) {
-        render404();
+        await render404();
       }
     } else {
-      render404();
+      await render404();
     }
   }
 }

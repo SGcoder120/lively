@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Not Found</title>
-  <link rel="stylesheet" href="https://unpkg.com/picocss@latest/css/pico.min.css">
+  <title>Lively | 404</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="/src/404.css">
 </head>
-<body>
+<body class="not-found-page">
   <main class="container">
-    <h1>404 &mdash; Not Found</h1>
-    <p>Sorry, the page you're looking for doesn't exist.</p>
-    <p><a href="/">Return home</a></p>
+    <article class="not-found-card">
+      <p class="status-code">404</p>
+      <h1>Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+      <a href="/" role="button" class="secondary outline">Return Home</a>
+    </article>
   </main>
 </body>
 </html>
