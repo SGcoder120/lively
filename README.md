@@ -1,47 +1,20 @@
 # Lively
 
-Concert discovery web app with an Express API and a vanilla JavaScript frontend.
-
-## Features
-
-- Browse a concert list
-- Open a concert detail page
-- Filter by:
-  - Genre
-  - Ticket price range
-  - Venue size
+Concert discovery web app with a vanilla JavaScript frontend and an Express backend.
 
 ## Tech Stack
 
-- Frontend: Vanilla JS + Vite
-- Styling: CSS + PicoCSS
+- Frontend: Vanilla JS + Vite + PicoCSS
 - Backend: Node.js + Express
-- Data: Local in-memory dataset (`server/data/concerts.js`)
-
-## Project Structure
-
-```text
-lively/
-  client/
-    index.html
-    404.html
-    public/concertIcon.jpg
-    src/main.js
-    src/style.css
-    vite.config.js
-  server/
-    index.js
-    data/concerts.js
-```
+- Database tooling: PostgreSQL (`pg`) reset/seed script
+- Runtime API data source: `server/data/concerts.js`
 
 ## Prerequisites
 
-- Node.js 18+ recommended
+- Node.js 18+ (Node 22 recommended)
 - npm
 
-## Setup
-
-Install dependencies in both apps:
+## Install
 
 ```bash
 cd server
@@ -53,58 +26,62 @@ npm install
 
 ## Run (Development)
 
-Start the API server:
+1. Start the API:
 
 ```bash
 cd server
 npm start
 ```
 
-In a second terminal, start the frontend dev server:
+`npm start` runs:
+
+- `npm run reset` (recreates and seeds the `concerts` table)
+- `nodemon --require dotenv/config server.js`
+
+2. Start the frontend in a second terminal:
 
 ```bash
 cd client
 npm run dev
 ```
 
-Open the URL shown by Vite (usually `http://localhost:5173`).
+## Environment Variables (Server)
 
-Notes:
+Create `server/.env` with:
 
-- API runs on `http://localhost:3000`
-- Vite proxies `/api` requests to port `3000` via `client/vite.config.js`
+```env
+PGUSER=your_user
+PGPASSWORD=your_password
+PGHOST=your_host
+PGPORT=5432
+PGDATABASE=your_database
+```
 
 ## API Endpoints
 
 - `GET /api/concerts`
-  - Returns all concerts
+  - Returns all concerts from `server/data/concerts.js`
 - `GET /api/concerts/:slug`
   - Returns one concert by slug
   - Returns `404` JSON if not found
 
-## Data Model
+## Database Reset Script
 
-Each concert entry includes:
+Run manually:
 
-- `id`
-- `slug`
-- `eventName`
-- `artists` (array)
-- `dateTime` (display string)
-- `venue`
-- `venueSize` (`Small` | `Medium` | `Large`)
-- `city`
-- `genre`
-- `ticketPrice` (number or `null` for free)
+```bash
+cd server
+npm run reset
+```
 
-## Scripts
+This executes `server/config/reset.js`, which:
 
-### Client (`client/package.json`)
+- Drops `concerts` table if it exists
+- Recreates `concerts`
+- Seeds rows from `server/data/concerts.js`
 
-- `npm run dev` - Start Vite dev server
-- `npm run build` - Build frontend assets
-- `npm run preview` - Preview built assets
+## Notes
 
-### Server (`server/package.json`)
-
-- `npm start` - Run Express server with Nodemon
+- The frontend dev server proxies `/api` to `http://localhost:3000` (see `client/vite.config.js`).
+- `client` build output is configured to `server/public`.
+- `server/routes/concerts.js` references `server/public/concert.html`; add that file if you plan to serve a detail page from that route.
