@@ -1,3 +1,5 @@
+import { pool } from '../config/database.js'
+
 const concerts = [
   {
     id: 1,
