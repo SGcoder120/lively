@@ -4,7 +4,7 @@ Concert discovery web app with a vanilla JavaScript frontend and an Express back
 
 ## Tech Stack
 
-- Frontend: Vanilla JS + Vite + PicoCSS
+- Frontend: Vanilla JS + Vite + CSS
 - Backend: Node.js + Express
 - Database tooling: PostgreSQL (`pg`) reset/seed script
 - Runtime API data source: `server/data/concerts.js`
