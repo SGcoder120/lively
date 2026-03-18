@@ -85,3 +85,7 @@ This executes `server/config/reset.js`, which:
 - The frontend dev server proxies `/api` to `http://localhost:3000` (see `client/vite.config.js`).
 - `client` build output is configured to `server/public`.
 - `server/routes/concerts.js` references `server/public/concert.html`; add that file if you plan to serve a detail page from that route.
+
+## Demos
+- https://imgur.com/a/web103-unit-1-video-demo-N4ROmkX
+- https://imgur.com/a/web-103-unit-2-rmxCDl6
